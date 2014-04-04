@@ -3,4 +3,6 @@ NkuProject::Application.routes.draw do
   resources :sessions 
   root to: "users#index"
   
+   get "sign_out", to: "sessions#destroy"
+  
 end
