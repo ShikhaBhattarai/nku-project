@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404212425) do
+ActiveRecord::Schema.define(version: 20140415183737) do
+
+  create_table "attributes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.integer  "rate"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipies", force: true do |t|
+    t.text     "smallImageUrls"
+    t.text     "imageUrlsBySize"
+    t.text     "attributes"
+    t.integer  "totalTimeInSeconds"
+    t.integer  "rating"
+    t.string   "recipeName"
+    t.string   "sourceDisplayName"
+    t.string   "recipe_id"
+    t.text     "flavors"
+    t.text     "ingredients"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "firstname"

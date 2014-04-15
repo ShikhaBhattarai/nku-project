@@ -1,0 +1,7 @@
+<div>
+  <% @recipies.each do |recipie| %>
+    <p> <img src= <%= recipie["smallImageUrls"][0] %> ></p>
+    <h3><%= link_to recipy_path(recipie) do %> <p> <%= recipie.recipeName %> </p>  <% end %></h3>
+    <br><br><br>
+  <% end %>
+</div>

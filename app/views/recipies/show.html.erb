@@ -1,0 +1,44 @@
+<div>
+    <p> <%= @recipie.recipeName %> </p>
+    <p> <img src= <%= @recipie["imageUrlsBySize"]["90"] %> ></p>
+  Time: <p> <%= ((@recipie.totalTimeInSeconds.to_i / 60) ) %> Minutes </p>
+    <br><br>
+    Ingredients:
+     <% @recipie.ingredients.each do |ingredient| %>
+        <li><%= ingredient %></li>
+    <% end %>
+    <br><br>
+    Flavors: 
+    <% @recipie.flavors.each do |flavor| %>
+       <%= flavor[0] %> &nbsp; <meter value=<%= flavor[1] %>></meter>
+    <%end%>
+    <br><br>
+    Rate:<%= @recipie.rating %>
+</div>
+
+
+  
+<%= form_for @comment do |f| %>
+    <div class="form-group">
+      <%= f.label :comment %>
+      <%= f.text_area :comment, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :rate, 'Rate' %>
+      <%= f.number_field :rate, in: 1...6  %>     
+    </div>
+
+    <%= f.hidden_field :recipe_id , :value => @recipie.id  %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+
+<br><br>
+
+<% unless @comments.empty? %>
+    <h3>Comments:</h3>
+    <% @comments.each do |comment|%>    
+      <p><%= User.find(comment.user_id).firstname %>&nbsp; said &nbsp;<%= comment.comment %></p>
+      Rate:<%= comment.rate%>
+    <% end %>
+<% end %>

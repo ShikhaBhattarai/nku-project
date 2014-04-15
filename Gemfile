@@ -26,3 +26,5 @@ group :production do
   gem 'pg'
   gem 'uglifier'
 end
+
+gem 'safe_attributes'
