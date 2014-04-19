@@ -1,45 +1,58 @@
-<div>
-    <p> <%= @recipie.recipeName %> </p>
-    <p> <img src= <%= @recipie["imageUrlsBySize"]["90"] %> ></p>
-  Time: <p> <%= ((@recipie.totalTimeInSeconds.to_i / 60) ) %> Minutes </p>
-    <br><br>
-    Ingredients:
+<div class= "container">
+  <%= link_to "Home", :root %> >
+  <div class= "jumbotron">
+    
+      <br>
+    <h1><u> <%= @recipie.recipeName %></u> </h1>
+      <img src= <%= @recipie["imageUrlsBySize"]["90"] %> 
+
+    <br>
+    <p><strong>Time: </strong>  <%= ((@recipie.totalTimeInSeconds.to_i / 60) ) %> Minutes </p>
+      <h3><strong>Ingredients: </strong></h3>
      <% @recipie.ingredients.each do |ingredient| %>
-        <li><%= ingredient %></li>
+
+    <li><%= ingredient %></li>
     <% end %>
-    <br><br>
-    Flavors: 
+ 
+    <h3> <strong>Flavors: </strong></h3> 
     <% @recipie.flavors.each do |flavor| %>
-       <%= flavor[0] %> &nbsp; <meter value=<%= flavor[1] %>></meter>
+    <%= flavor[0] %> &nbsp; <meter value=<%= flavor[1] %>></meter>
     <%end%>
-    <br><br>
-    Rate:<%= @recipie.rating %>
-</div>
-
-
-  
-<%= form_for @comment do |f| %>
+    <br>
+    <h3> <strong>Rate: </strong><%= @recipie.rating %></h3>
+    <%= form_for @comment do |f| %>
     <div class="form-group">
-      <%= f.label :comment %>
+      <h4><strong><%= f.label :comment %> </strong></h4>
       <%= f.text_area :comment, class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <%= f.label :rate, 'Rate' %>
+
       <%= f.number_field :rate, in: 1...6  %>     
     </div>
 
+    
     <%= f.hidden_field :recipe_id , :value => @recipie.id  %>
     <%= f.submit class: 'btn btn-primary' %>
   <% end %>
-
-<br><br>
-
+<br>
 <% unless @comments.empty? %>
-    <h3>Comments:</h3>
+    <hr>
+    <h4><strong>Comments:</strong></h4>
+    <br>
     <% @comments.each do |comment|%>    
-      <p><%= User.find(comment.user_id).firstname %>&nbsp; said &nbsp;<%= comment.comment %></p>
-      Rate:<%= comment.rate%>
+    <strong><%= User.find(comment.user_id).firstname %>&nbsp; said:</strong> &nbsp;<em><%= comment.comment %></em>
+    <br>
+    <h4><strong>Rate: </strong><%= comment.rate%></h4>
+    <hr>
     <% end %>
+    
 <% end %>
+    <br>
+    
+</div>
+</div>
+
+
 

@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   
   skip_before_filter :require_authentication
-  
+
+  def index
+    unless params[:search].nil?  
+      redirect_to search_path(:search => params[:search])
+    end
+  end
   def new
     @user = User.new
   end
@@ -18,3 +23,8 @@ class UsersController < ApplicationController
     params.require(:user).permit!
   end
 end
+
+
+
+
+

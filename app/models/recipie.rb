@@ -6,7 +6,15 @@ class Recipie < ActiveRecord::Base
   serialize :flavors, Hash
   serialize :ingredients, Array
 
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['recipeName LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
 end
+
 
 
 

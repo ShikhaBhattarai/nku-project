@@ -6,4 +6,5 @@ NkuProject::Application.routes.draw do
   
    get "sign_out", to: "sessions#destroy"
    post "comments", to: "recipies#comment"
+   get "/search", to: "recipies#index"
 end

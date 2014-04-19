@@ -1,10 +1,14 @@
 class RecipiesController < ApplicationController
   
   def index
-    @recipies = Recipie.all
+    if params[:search].nil?
+      @recipies = Recipie.where(:category => params["format"])
+    else
+      @recipies = Recipie.search(params[:search])
+    end
   end
   
-  def show
+  def show    
     @recipie = Recipie.find(params[:id])
     @comments = Comment.where(:recipe_id => params[:id])
     @comment = Comment.new
@@ -22,5 +26,8 @@ class RecipiesController < ApplicationController
   end
   
 end
+
+
+
 
 
