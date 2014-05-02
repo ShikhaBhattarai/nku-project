@@ -1,0 +1,46 @@
+<div class="container">
+<div class="page-header">
+  <h1>Create your Recipie</h1>
+</div>
+  <div class="row col-sm-6">
+    <%= form_for @recipie do |f| %>
+    
+    <div class="form-group">
+    <%= f.label :recipeName, 'Recipie Name' %>
+    <%= f.text_field :recipeName %>
+    </div>
+    
+    <div class="form-group">
+    <%= f.label :totalTimeInSeconds, 'Time' %>
+    <%= f.text_field :totalTimeInSeconds %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :ingredients, 'Ingredients' %>
+      <%= f.text_area :ingredients , :value => "" %>
+    </div>
+    
+    
+    <div class="form-group">
+      <h1> Flavors</h1>
+    <%= label_tag "salt" %>
+    <%= text_field_tag "#{:flavors}[salt]"%>
+    </div>
+     <div class="form-group">
+    <%= f.label :bitter%>
+    <%= text_field_tag "#{:flavors}[bitter]" %>
+    </div>
+     <div class="form-group">
+    <%= f.label :meaty%>
+    <%= text_field_tag "#{:flavors}[meaty]" %>
+    </div>
+     <div class="form-group">
+    <%= f.label :sweet%>
+       <%= text_field_tag "#{:flavors}[sweet]" %>
+       </div>
+    <%= f.submit class: 'btn btn-primary' %>    
+    &nbsp;or
+    <%= link_to 'Cancel', recipies_path %>
+    <% end %>
+   </div>
+</div>

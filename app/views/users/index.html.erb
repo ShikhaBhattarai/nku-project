@@ -6,14 +6,11 @@
   <td>
     <div class="left-text">
     <form class="navbar-form navbar-left" role="search">
-    
     <%= form_tag search_path do %>
-          <%= text_field_tag  :search, "Search" , :class => "form-control"%>       
-    
+    <%= text_field_tag  :search, "Search" , :class => "form-control"%>       
     <% end %>
-    
     </form>
-    <a class="btn btn-primary btn-lg" role="button"><strong>Create Recipie</strong></a>
+   <%= link_to "Create Recipie", new_recipy_path, class: "btn btn-primary navbar-btn" %>
       
     </div>
 
@@ -48,6 +45,9 @@
   <%end %>
 </div>
 </div>
+
+
+
 
 
 
