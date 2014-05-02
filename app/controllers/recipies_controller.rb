@@ -20,7 +20,7 @@ class RecipiesController < ApplicationController
     @recipie.flavors =  params[:flavors]
     @recipie.ingredients = params["recipie"]["ingredients"].split(",") 
     @recipie.save
-
+    redirect_to :root
   end
   
   def show    
