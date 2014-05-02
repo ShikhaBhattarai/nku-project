@@ -11,12 +11,16 @@
   <nav class="navbar navbar-default">
     <div class="navbar-header">
       <div class="navbar-brand">
-        <%= link_to "Home", root_path %>
+        <%= link_to "Home", root_path %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if current_user %>
+         <%= link_to "My Recipie", recipies_path %>
+        <% end%>
       </div>
     </div>
     <div class="collapse navbar-collapse navbar-right">
  <% if current_user %>
      <%= link_to "Sign out", sign_out_path, class: "btn btn-default navbar-btn"%>
+      
   <%else%>
 <%= link_to "Sign up", new_user_path, class: "btn btn-default navbar-btn" %>
 <%= link_to "Sign in", new_session_path, class: "btn btn-primary navbar-btn" %>

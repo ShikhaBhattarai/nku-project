@@ -4,7 +4,6 @@
 <% @recipie.each do |f| %>
 <h1><u> <%= @recipie.recipeName %></u> </h1>
       <img src= <%= @recipie["imageUrlsBySize"]["90"] %> 
-
     <br>
     <p><strong>Time: </strong>  <%= ((@recipie.totalTimeInSeconds.to_i / 60) ) %> Minutes </p>
       <h3><strong>Ingredients: </strong></h3>
